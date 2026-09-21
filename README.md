@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio Project
+
+A modern portfolio website built with Next.js, TypeScript, and Tailwind CSS.
+
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS v3
+- **Icons:** Lucide React
+- **Font:** Inter (Google Fonts)
+
+## Project Structure
+
+```
+├── public/                 # Static assets
+├── src/
+│   ├── app/
+│   │   ├── components/    # Page sections
+│   │   │   ├── ContactSection.tsx
+│   │   │   ├── HeroSection.tsx
+│   │   │   ├── ProjectsSection.tsx
+│   │   │   ├── StackSection.tsx
+│   │   │   └── TestimonialsSection.tsx
+│   │   ├── layout.tsx     # Root layout
+│   │   ├── not-found.tsx  # 404 page
+│   │   ├── page.tsx       # Home page
+│   │   ├── robots.ts      # Robots.txt
+│   │   └── sitemap.ts     # Sitemap
+│   ├── components/        # Reusable components
+│   │   ├── ui/
+│   │   │   ├── AppIcon.tsx
+│   │   │   ├── AppImage.tsx
+│   │   │   └── AppLogo.tsx
+│   │   ├── Footer.tsx
+│   │   └── Header.tsx
+│   └── styles/
+│       ├── index.css      # Global styles
+│       └── tailwind.css   # Tailwind directives
+├── .env                   # Environment variables
+├── .eslintrc.json         # ESLint config
+├── .prettierrc            # Prettier config
+├── image-hosts.config.mjs # Image host configuration
+├── next.config.mjs        # Next.js config
+├── postcss.config.js      # PostCSS config
+└── tailwind.config.js     # Tailwind config
+```
 
 ## Getting Started
 
-First, run the development server:
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Copy `.env` and configure:
 
-## Learn More
+- `NEXT_PUBLIC_SITE_URL` - Your site URL (default: http://localhost:3000)
 
-To learn more about Next.js, take a look at the following resources:
+## Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Conventions
 
-## Deploy on Vercel
+- **Page Sections** (`src/app/components/`) - Components specific to the home page
+- **Shared Components** (`src/components/`) - Reusable UI components
+- All components use named function declarations with default export
+- Server Components by default; add `"use client"` only when needed
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Private
