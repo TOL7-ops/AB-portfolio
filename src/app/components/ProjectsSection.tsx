@@ -160,11 +160,11 @@ function ProjectCard({ project, index }: {project: Project;index: number;}) {
       </p>
 
       {/* Note & Deliverables box */}
-      <div className="border border-gray-200 rounded-2xl p-6 bg-white">
+      <div className="border border-gray-200 rounded-2xl p-6 bg-white max-w-[70rem] ml-[2rem]">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Note column */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 mb-2">Note:</h3>
+            <h3 className="text-[24px] font-[500] text-black mb-2">Note:</h3>
             <p className="text-sm text-gray-600 leading-relaxed">
               {project.note}
             </p>
@@ -172,7 +172,7 @@ function ProjectCard({ project, index }: {project: Project;index: number;}) {
           
           {/* Deliverables column */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 mb-2">Deliverables:</h3>
+            <h3 className="text-[24px] font-[500] text-black mb-2">Deliverables:</h3>
             <p className="text-sm text-gray-600 leading-relaxed">
               {project.deliverables}
             </p>
@@ -205,7 +205,7 @@ export default function ProjectsSection() {
   }, []);
 
   return (
-    <section id="projects" className="py-20 px-6 bg-background">
+    <section id="projects" className="py-20 px-6 bg-white">
       <div className="max-w-[76rem] mx-auto">
         {/* Section header - Centered with dotted line */}
         <div ref={headingRef} className="mb-14 text-center">
@@ -224,7 +224,22 @@ export default function ProjectsSection() {
           
           {/* Main heading - centered */}
           <div className="scroll-reveal stagger-2">
-            <h2 className="font-bold text-4xl md:text-5xl text-gray-900 leading-tight">
+            <h2 
+              className="leading-tight"
+              style={{
+                width: 'auto',
+                height: 'auto',
+                whiteSpace: 'pre',
+                fontWeight: 500,
+                fontStyle: 'normal',
+                fontFamily: '"Manrope", "Manrope Placeholder", sans-serif',
+                color: '#000000',
+                fontSize: '48px',
+                letterSpacing: '0em',
+                // textAlign: 'center',
+                lineHeight: '1.2'
+              }}
+            >
               <span className="block">Delivering Tangible Results</span>
               <span className="block">That Propel Success</span>
             </h2>

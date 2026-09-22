@@ -30,33 +30,53 @@ export default function ContactSection() {
       id="contact" 
       className="w-full h-min flex flex-col justify-end items-start px-24 pb-48 pt-8 overflow-visible gap-14 bg-white"
     >
-      <div ref={sectionRef} className="w-full max-w-[60rem] mx-auto flex flex-col gap-14">
-        {/* Top section: Logo + Heading only */}
+      <div ref={sectionRef} className="w-full max-w-[45rem] mx-auto flex flex-col gap-14">
+        {/* Top section: Logo + Heading (logo on same line as first line of heading) */}
         <div className="flex items-start gap-8">
-          <div className="scroll-reveal" style={{ width: '556px', height: '146px' }}>
-            <div className="flex items-center gap-3 mb-4">
+          <div className="scroll-reveal flex-shrink-0">
+            {/* Logo with heading on same horizontal line */}
+            <div className="flex gap-4">
+              {/* Logo box */}
               <div 
-                className="w-min h-min flex flex-row justify-start items-start overflow-visible rounded-xl"
+                className="w-[4rem] h-[4rem] flex flex-row justify-start items-start overflow-visible rounded-xl flex-shrink-0"
                 style={{
                   padding: '12.148px',
                   backgroundColor: '#f4f4f4',
                   gap: '3.037px'
                 }}
               >
-                <AppLogo size={28} />
+                <AppLogo src="" iconName="Sparkles" size={28} />
+              </div>
+              
+              {/* Heading - logo vertically centered with first line */}
+              <div>
+                <h2 
+                  className="font-medium"
+                  style={{
+                    width: 'auto',
+                    height: 'auto',
+                    whiteSpace: 'pre',
+                    fontWeight: 500,
+                    fontStyle: 'normal',
+                    fontFamily: '"Manrope", "Manrope Placeholder", sans-serif',
+                    color: '#000000',
+                    fontSize: '56px',
+                    letterSpacing: '0em',
+                    lineHeight: '1.2'
+                  }}
+                >
+                  <span className="block">Web &amp; Mobile App</span>
+                  <span className="block ml-0 sm:ml-[8ch] md:ml-[9ch] lg:ml-[6ch]">
+                    <span className="italic">Design Expert</span>
+                  </span>
+                </h2>
               </div>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
-              <span className="block">Web &amp; Mobile App</span>
-              <span className="block ml-0 sm:ml-[8ch] md:ml-[9ch] lg:ml-[6ch]">
-                <span className="italic">Design Expert</span>
-              </span>
-            </h2>
           </div>
         </div>
 
         {/* Bottom section: Description + Button (aligned horizontally) */}
-        <div className="flex items-center  gap-[6rem]">
+        <div className="flex items-center  gap-[6rem] mt-[2rem]">
           {/* Left: Description */}
           <div className="scroll-reveal stagger-1" style={{ width: '436px' }}>
             <p 
@@ -75,9 +95,15 @@ export default function ContactSection() {
           <div className="scroll-reveal stagger-2 relative">
             <a
               href="mailto:eric@design.studio"
-              className="inline-flex items-center justify-center gap-3 bg-gray-800 text-white font-semibold px-8 py-4 rounded-2xl hover:bg-gray-700 transition-all text-base"
+              className="flex flex-row justify-center items-center w-min h-min px-[1.5rem] py-[1rem] rounded-xl overflow-visible gap-[10px] border-2 border-black hover:opacity-90 transition-opacity"
+              style={{
+                background: 'linear-gradient(90deg, #494545 0%, rgb(98, 97, 97) 100%)',
+                boxSizing: 'border-box'
+              }}
             >
-              Drop a message
+              <span className="text-white font-medium text-base whitespace-nowrap">
+                Drop a message
+              </span>
             </a>
             {/* Pointer icon positioned near button */}
             <div className="absolute -bottom-[7rem] right-[12rem] opacity-60">

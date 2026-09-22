@@ -7,7 +7,7 @@ import AppImage from '@/components/ui/AppImage';
 export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white">
-      <div className="max-w-6xl mx-auto px-8 h-16 flex items-center justify-between">
+      <div className="max-w-[55rem] mx-auto px-8 h-16 flex items-center justify-between">
         {/* Left: Avatar + Home label */}
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full overflow-hidden">

@@ -128,7 +128,22 @@ export default function StackSection() {
       <div className="max-w-[76rem] mx-auto">
         {/* Header */}
         <div ref={headingRef} className="mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 scroll-reveal">
+          <h2 
+            className="mb-3 scroll-reveal"
+            style={{
+              width: 'auto',
+              height: 'auto',
+              whiteSpace: 'pre',
+              fontWeight: 500,
+              fontStyle: 'normal',
+              fontFamily: '"Manrope", "Manrope Placeholder", sans-serif',
+              color: '#000000',
+              fontSize: '48px',
+              letterSpacing: '0em',
+              // textAlign: 'center',
+              lineHeight: '1.2'
+            }}
+          >
             My Stack
           </h2>
           <p className="text-gray-600 text-base leading-relaxed scroll-reveal stagger-1">

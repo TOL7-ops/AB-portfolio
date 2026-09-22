@@ -118,9 +118,24 @@ export default function TestimonialsSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section id="testimonials" className="py-20 bg-background overflow-hidden">
+    <section id="testimonials" className="py-20 bg-white overflow-hidden">
       <div className="max-w-[76rem] mx-auto px-6 mb-10">
-        <h2 className="font-display text-section-title font-bold text-foreground mb-2">
+        <h2 
+          className="mb-2"
+          style={{
+            width: 'auto',
+            height: 'auto',
+            whiteSpace: 'pre',
+            fontWeight: 500,
+            fontStyle: 'normal',
+            fontFamily: '"Manrope", "Manrope Placeholder", sans-serif',
+            color: '#000000',
+            fontSize: '48px',
+            letterSpacing: '0em',
+            // textAlign: 'center',
+            lineHeight: '1.2'
+          }}
+        >
           Testimonials From Peers &amp; Coworkers
         </h2>
         <p className="text-muted-foreground text-sm leading-relaxed max-w-[40rem] mr-4">

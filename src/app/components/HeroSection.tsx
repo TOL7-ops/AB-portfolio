@@ -76,12 +76,27 @@ export default function HeroSection() {
 
   return (
     <section className="min-h-screen flex flex-col items-center justify-center pt-16 pb-0 bg-white">
-      <div className="flex-1 flex flex-col items-center justify-center w-full max-w-4xl mx-auto px-6 text-center">
+      <div className="flex-1 flex flex-col items-center justify-center w-full max-w-4xl mx-auto px-6 text-center mt-[7rem]">
         {/* Animated Icon */}
         <AnimatedIcon className="mb-8 text-gray-900" />
         
         {/* Heading - Staggered/Cascading Layout */}
-        <h1 className="text-5xl md:text-5xl font-[700] text-gray-900 leading-tight mb-6">
+        <h1 
+          className="mb-6"
+          style={{
+            width: 'auto',
+            height: 'auto',
+            whiteSpace: 'pre',
+            fontWeight: 500,
+            fontStyle: 'normal',
+            fontFamily: '"Manrope", "Manrope Placeholder", sans-serif',
+            color: '#000000',
+            fontSize: '48px',
+            letterSpacing: '0em',
+            textAlign: 'center',
+            lineHeight: '1.2'
+          }}
+        >
           {currentSlide.heading.split('\n').map((line, index) => {
             // Use custom offset if provided, otherwise use default responsive offsets
             const offsetClass = currentSlide.customOffset
