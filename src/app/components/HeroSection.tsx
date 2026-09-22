@@ -75,23 +75,21 @@ export default function HeroSection() {
   const currentSlide = slides[activeSlide];
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center pt-16 pb-0 bg-white">
-      <div className="flex-1 flex flex-col items-center justify-center w-full max-w-4xl mx-auto px-6 text-center mt-[7rem]">
+    <section className="min-h-screen flex flex-col items-center justify-center pt-16 pb-0 px-4 sm:px-6 bg-white">
+      <div className="flex-1 flex flex-col items-center justify-center w-full max-w-4xl mx-auto text-center mt-[7rem]">
         {/* Animated Icon */}
-        <AnimatedIcon className="mb-8 text-gray-900" />
+        <AnimatedIcon className="mb-6 sm:mb-8 text-gray-900" />
         
         {/* Heading - Staggered/Cascading Layout */}
         <h1 
-          className="mb-6"
+          className="mb-4 sm:mb-6 text-2xl sm:text-3xl md:text-4xl lg:text-[48px] px-2"
           style={{
             width: 'auto',
             height: 'auto',
-            whiteSpace: 'pre',
             fontWeight: 500,
             fontStyle: 'normal',
             fontFamily: '"Manrope", "Manrope Placeholder", sans-serif',
             color: '#000000',
-            fontSize: '48px',
             letterSpacing: '0em',
             textAlign: 'center',
             lineHeight: '1.2'
@@ -99,9 +97,10 @@ export default function HeroSection() {
         >
           {currentSlide.heading.split('\n').map((line, index) => {
             // Use custom offset if provided, otherwise use default responsive offsets
+            // Reduce offsets on mobile
             const offsetClass = currentSlide.customOffset
               ? `ml-0 sm:ml-[${currentSlide.customOffset}]`
-              : 'ml-0 sm:ml-[10ch] md:ml-[12ch] lg:ml-[8ch]';
+              : 'ml-0 sm:ml-[6ch] md:ml-[8ch] lg:ml-[10ch]';
             
             return (
               <span
@@ -115,14 +114,14 @@ export default function HeroSection() {
         </h1>
 
         {/* Bio */}
-        <div className="min-h-[5rem] mb-8 max-w-xl mx-auto">
-          <p className="text-sm md:text-base text-gray-600 leading-relaxed text-center">
+        <div className="min-h-[5rem] mb-6 sm:mb-8 max-w-xl mx-auto px-2">
+          <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed text-center">
             {currentSlide.bio}
           </p>
         </div>
 
         {/* Dot indicators */}
-        <div className="flex items-center justify-center gap-2 mb-10">
+        <div className="flex items-center justify-center gap-2 mb-8 sm:mb-10">
           {slides.map((_, i) => (
             <button
               key={i}
@@ -137,16 +136,16 @@ export default function HeroSection() {
         </div>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full px-4">
           <a
             href="#contact"
-            className="bg-gray-900 text-white text-sm font-semibold px-8 py-3 rounded-full hover:bg-gray-700 transition-colors"
+            className="w-full sm:w-auto bg-gray-900 text-white text-xs sm:text-sm font-semibold px-6 sm:px-8 py-3 rounded-full hover:bg-gray-700 transition-colors text-center"
           >
             Contact Me
           </a>
           <button
             onClick={handleSecondaryCTA}
-            className="flex items-center gap-2 border border-gray-300 text-gray-800 text-sm font-medium px-8 py-3 rounded-full hover:border-gray-500 transition-colors bg-white"
+            className="w-full sm:w-auto flex items-center justify-center gap-2 border border-gray-300 text-gray-800 text-xs sm:text-sm font-medium px-6 sm:px-8 py-3 rounded-full hover:border-gray-500 transition-colors bg-white"
           >
             {currentSlide.ctaLabel}
             <span className="text-base">→</span>

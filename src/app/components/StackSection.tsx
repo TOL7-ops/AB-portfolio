@@ -74,26 +74,26 @@ function ToolRow({ tool, index }: { tool: Tool; index: number }) {
       style={{ transitionDelay: `${index * 0.08}s` }}
     >
       {/* Tool card */}
-      <div className="flex items-center justify-between p-4 hover:bg-gray-50 rounded-xl transition-colors">
+      <div className="flex items-center justify-between p-3 sm:p-4 hover:bg-gray-50 rounded-xl transition-colors">
         {/* Left: Icon + Info */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           {/* Tool icon */}
-          <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${tool.color}15` }}>
-            <svg viewBox="0 0 24 24" className="w-5 h-5" fill={tool.color}>
+          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${tool.color}15` }}>
+            <svg viewBox="0 0 24 24" className="w-4 h-4 sm:w-5 sm:h-5" fill={tool.color}>
               <path d={tool.svgPath} />
             </svg>
           </div>
 
           {/* Tool info */}
           <div>
-            <div className="font-semibold text-gray-900 text-base">{tool.name}</div>
-            <div className="text-gray-600 text-sm">{tool.category}</div>
+            <div className="font-semibold text-gray-900 text-sm sm:text-base">{tool.name}</div>
+            <div className="text-gray-600 text-xs sm:text-sm">{tool.category}</div>
           </div>
         </div>
 
         {/* Right: Arrow */}
         <div className="text-gray-400 group-hover:text-gray-900 group-hover:translate-x-1 transition-all">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="sm:w-5 sm:h-5">
             <path d="M5 12h14M12 5l7 7-7 7"/>
           </svg>
         </div>
@@ -124,36 +124,31 @@ export default function StackSection() {
   }, []);
 
   return (
-    <section id="stack" className="py-20 px-6 bg-white">
+    <section id="stack" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-white">
       <div className="max-w-[76rem] mx-auto">
         {/* Header */}
-        <div ref={headingRef} className="mb-12">
+        <div ref={headingRef} className="mb-8 sm:mb-10 md:mb-12">
           <h2 
-            className="mb-3 scroll-reveal"
+            className="mb-2 sm:mb-3 scroll-reveal text-2xl sm:text-3xl md:text-4xl lg:text-[48px]"
             style={{
-              width: 'auto',
-              height: 'auto',
-              whiteSpace: 'pre',
               fontWeight: 500,
               fontStyle: 'normal',
               fontFamily: '"Manrope", "Manrope Placeholder", sans-serif',
               color: '#000000',
-              fontSize: '48px',
               letterSpacing: '0em',
-              // textAlign: 'center',
               lineHeight: '1.2'
             }}
           >
             My Stack
           </h2>
-          <p className="text-gray-600 text-base leading-relaxed scroll-reveal stagger-1">
+          <p className="text-gray-600 text-sm sm:text-base leading-relaxed scroll-reveal stagger-1">
             Commitment to staying updated with the latest design trends and techniques.
           </p>
         </div>
 
        <div className='max-w-4xl mx-auto'>
-         {/* 2-column grid of tools */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2">
+         {/* 2-column grid of tools - single column on mobile */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 sm:gap-x-8 gap-y-2">
           {tools.map((tool, index) => (
             <ToolRow key={tool.name} tool={tool} index={index} />
           ))}
