@@ -4,6 +4,7 @@ import remotePatterns from "./image-hosts.config.mjs";
 const nextConfig = {
   images: {
     remotePatterns,
+    unoptimized: true, // Disable image optimization to prevent blur
   },
 };
 

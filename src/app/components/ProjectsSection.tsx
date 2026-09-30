@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
+import Link from 'next/link';
 import AppImage from '@/components/ui/AppImage';
 
 interface Project {
@@ -15,6 +16,7 @@ interface Project {
   note: string;
   deliverables: string;
   link?: string;
+  slug?: string;  // Add slug for case study routing
 }
 
 const projects: Project[] = [
@@ -29,7 +31,8 @@ const projects: Project[] = [
   bgColor: '#1B4332',
   note: 'This product is in active development',
   deliverables: 'Website, Web App & Admin Portal',
-  link: 'https://www.lafyai.com/'
+  link: 'https://www.lafyai.com/',
+  slug: 'getvax'
 },
 {
   id: 2,
@@ -42,7 +45,8 @@ const projects: Project[] = [
   bgColor: '#E8F4F8',
   note: 'Currently in beta testing with select users',
   deliverables: 'iOS App, Android App & Web Dashboard',
-  link: 'https://useafiyai.com/'
+  link: 'https://useafiyai.com/',
+  slug: 'afya'
 },
 {
   id: 3,
@@ -89,63 +93,107 @@ function ProjectCard({ project, index }: {project: Project;index: number;}) {
         <span className="text-sm text-gray-500">{project.year}</span>
       </div>
       
-      {/* Project image - conditional styling for GetVax */}
-      {project.id === 1 ? (
-        // GetVax: Green background with absolutely positioned image
+      {/* Project image - wrapped in Link if slug exists */}
+      {project.slug ? (
+        // Internal case study link
+        <Link 
+          href={`/work/${project.slug}`}
+          className="block w-full mb-6 rounded-[32px] overflow-hidden transition-opacity hover:opacity-90 cursor-pointer relative"
+          style={project.id === 1 ? { 
+            backgroundColor: '#195243',
+            height: '100%',
+            aspectRatio: '1.7916666666666667 / 1'
+          } : undefined}
+        >
+          {project.id === 1 ? (
+            <div 
+              style={{ 
+                position: 'absolute',
+                inset: '0',
+                width: '70%',
+                left: '10%',
+                top: '0',
+                right: '0',
+                bottom: '0'
+              }}
+            >
+              <AppImage
+                src={project.image}
+                alt={project.imageAlt}
+                fill
+                style={{
+                  objectFit: 'cover',
+                  color: 'transparent'
+                }}
+                sizes="100vw"
+              />
+            </div>
+          ) : (
+            <div className="relative w-full" style={{ aspectRatio: '1.7916666666666667 / 1' }}>
+              <AppImage
+                src={project.image}
+                alt={project.imageAlt}
+                fill
+                className="object-cover"
+                sizes="100vw"
+              />
+            </div>
+          )}
+        </Link>
+      ) : project.link ? (
+        // External link
         <a 
           href={project.link} 
           target="_blank" 
           rel="noopener noreferrer"
           className="block w-full mb-6 rounded-[32px] overflow-hidden transition-opacity hover:opacity-90 cursor-pointer relative"
-          style={{ 
+          style={project.id === 1 ? { 
             backgroundColor: '#195243',
             height: '100%',
             aspectRatio: '1.7916666666666667 / 1'
-          }}
+          } : undefined}
         >
-          <div 
-            style={{ 
-              position: 'absolute',
-              inset: '0',
-              width: '70%',
-              left: '10%',
-              top: '0',
-              right: '0',
-              bottom: '0'
-            }}
-          >
-            <AppImage
-              src={project.image}
-              alt={project.imageAlt}
-              fill
-              style={{
-                objectFit: 'cover',
-                color: 'transparent'
+          {project.id === 1 ? (
+            <div 
+              style={{ 
+                position: 'absolute',
+                inset: '0',
+                width: '70%',
+                left: '10%',
+                top: '0',
+                right: '0',
+                bottom: '0'
               }}
-              sizes="100vw"
-            />
-          </div>
-        </a>
-      ) : project.link ? (
-        // Other projects with links: Full-width image, clickable
-        <a 
-          href={project.link} 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="block w-full mb-6 rounded-[32px] overflow-hidden transition-opacity hover:opacity-90 cursor-pointer">
-          <div className="relative w-full" style={{ aspectRatio: '1.7916666666666667 / 1' }}>
-            <AppImage
-              src={project.image}
-              alt={project.imageAlt}
-              fill
-              className="object-cover"
-              sizes="100vw"
-            />
-          </div>
+            >
+              <AppImage
+                src={project.image}
+                alt={project.imageAlt}
+                fill
+                style={{
+                  objectFit: 'cover',
+                  color: 'transparent'
+                }}
+                sizes="100vw"
+              />
+            </div>
+          ) : (
+            <div className="relative w-full" style={{ aspectRatio: '1.7916666666666667 / 1' }}>
+              <AppImage
+                src={project.image}
+                alt={project.imageAlt}
+                fill
+                className="object-cover"
+                sizes="100vw"
+              />
+            </div>
+          )}
         </a>
       ) : (
-        // Projects without links: Full-width image, not clickable
-        <div className="w-full mb-6 rounded-[32px] overflow-hidden">
+        // No link
+        <div 
+          className="w-full mb-6 rounded-[32px] overflow-hidden"
+          style={project.id === 1 ? { backgroundColor: '#195243' } : undefined}
+        >
           <div className="relative w-full" style={{ aspectRatio: '1.7916666666666667 / 1' }}>
             <AppImage
               src={project.image}

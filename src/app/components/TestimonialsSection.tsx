@@ -74,29 +74,41 @@ function TestimonialCard({ testimonial, index }: {testimonial: Testimonial;index
   return (
     <div
       ref={cardRef}
-      className="testimonial-card scroll-reveal relative flex flex-col justify-center items-start bg-[#f1f1f1] rounded-2xl pt-12 sm:pt-14 px-6 sm:px-8 pb-6 sm:pb-8 gap-12 sm:gap-[59px] flex-shrink-0"
+      className="testimonial-card scroll-reveal relative flex flex-col justify-between items-start bg-[#f1f1f1] rounded-2xl pt-20 sm:pt-24 px-6 sm:px-8 pb-6 sm:pb-8 gap-6 sm:gap-8 flex-shrink-0"
       style={{ 
-        transitionDelay: `${index * 0.1}s`,
+        transitionDelay: `${index * 0.15}s`,
         width: '320px',
         minWidth: '320px',
         height: 'auto',
-        minHeight: '420px'
+        minHeight: '420px',
+        boxSizing: 'border-box',
+        overflowWrap: 'break-word',
+        wordWrap: 'break-word'
       }}>
       
-      {/* Quote icon - rotated 180deg with opacity */}
-      <div className="absolute top-6 sm:top-8 left-6 sm:left-8 w-12 h-12 sm:w-16 sm:h-16 opacity-33 rotate-180">
+      {/* Quote icon - rotated 180deg with opacity, positioned with clear spacing */}
+      <div className="absolute top-6 sm:top-8 left-6 sm:left-8 w-12 h-12 sm:w-16 sm:h-16 opacity-20 rotate-180">
         <svg viewBox="0 0 24 24" className="w-full h-full fill-current text-gray-900">
           <path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-3.983v-10h9.983z" />
         </svg>
       </div>
 
-      {/* Quote text */}
-      <p className="text-gray-900 text-sm sm:text-base leading-relaxed">
+      {/* Quote text - with proper text wrapping */}
+      <p 
+        className="text-gray-900 text-sm sm:text-base leading-relaxed flex-grow"
+        style={{
+          width: '100%',
+          overflowWrap: 'break-word',
+          wordWrap: 'break-word',
+          wordBreak: 'break-word',
+          hyphens: 'auto'
+        }}
+      >
         {testimonial.quote}
       </p>
 
       {/* Author */}
-      <div className="flex items-center gap-2 sm:gap-3">
+      <div className="flex items-center gap-2 sm:gap-3 w-full">
         <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden flex-shrink-0 border border-gray-300">
           <AppImage
             src={testimonial.avatar}
@@ -105,7 +117,7 @@ function TestimonialCard({ testimonial, index }: {testimonial: Testimonial;index
             height={48}
             className="w-full h-full object-cover" />
         </div>
-        <div>
+        <div style={{ overflowWrap: 'break-word', wordWrap: 'break-word', flex: 1 }}>
           <div className="font-semibold text-gray-900 text-xs sm:text-sm">{testimonial.name}</div>
           <div className="text-gray-600 text-[10px] sm:text-xs">
             {testimonial.role} · {testimonial.company}
