@@ -12,91 +12,102 @@ export default function Header() {
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-100">
-      <div className="max-w-[55rem] mx-auto px-4 sm:px-8 h-16 flex items-center justify-between">
-        {/* Left: Avatar + Home label */}
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full overflow-hidden">
+    <header className="fixed top-6 left-0 right-0 w-full z-50">
+      <div className="max-w-2xl mx-auto px-6 h-14 flex items-center justify-between gap-16 bg-white">
+        {/* Left: Avatar + Home */}
+        <Link href="/" className="flex items-center gap-3 -ml-6" onClick={closeMenu}>
+          <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
             <AppImage
               src="https://img.rocket.new/generatedImages/rocket_gen_img_14ff30f05-1763294027584.png"
-              alt="Eric's profile avatar"
+              alt="Avatar"
               width={40}
               height={40}
               className="w-full h-full object-cover"
-              priority />
+              priority
+            />
           </div>
-          <Link href="/" className="text-sm font-medium text-gray-800 hover:text-gray-600 transition-colors">
+          <span className="text-[16px] font-medium text-black hover:text-gray-600 transition-colors">
             Home
-          </Link>
-        </div>
+          </span>
+        </Link>
 
-        {/* Desktop Nav links - hidden on mobile */}
-        <nav className="hidden md:flex items-center gap-8">
-          <Link href="#projects" className="text-sm text-gray-700 hover:text-gray-900 transition-colors">
+        {/* Desktop Nav Links */}
+        <nav className="hidden md:flex items-center gap-9 -mr-6">
+          <Link
+            href="/#projects"
+            className="text-[16px] font-medium text-black hover:text-gray-600 transition-colors"
+          >
             Project
           </Link>
-          <Link href="#about" className="text-sm text-gray-700 hover:text-gray-900 transition-colors">
+          <Link
+            href="/#about"
+            className="text-[16px] font-medium text-black hover:text-gray-600 transition-colors"
+          >
             About
           </Link>
-          <Link href="#contact" className="text-sm text-gray-700 hover:text-gray-900 transition-colors">
+          <Link
+            href="/#contact"
+            className="text-[16px] font-medium text-black hover:text-gray-600 transition-colors"
+          >
             Contact
           </Link>
-          <a 
-            href="https://docs.google.com/document/d/1UKovLviOsYOcy3R3mzYDpuiNb9keo2ygue_DtGtQFzo/export?format=pdf" 
+          <a
+            href="https://docs.google.com/document/d/1UKovLviOsYOcy3R3mzYDpuiNb9keo2ygue_DtGtQFzo/export?format=pdf"
             download
-            className="text-sm text-gray-700 hover:text-gray-900 transition-colors"
+            className="text-[16px] font-medium text-black hover:text-gray-600 transition-colors"
             target="_blank"
-            rel="noopener noreferrer">
+            rel="noopener noreferrer"
+          >
             Get CV
           </a>
         </nav>
 
-        {/* Hamburger button - visible on mobile */}
+        {/* Mobile Hamburger button */}
         <button
           onClick={toggleMenu}
           className="md:hidden p-2 text-gray-700 hover:text-gray-900 transition-colors"
           aria-label="Toggle menu"
         >
           {isMenuOpen ? (
-            <AppIcon name="X" size={24} />
+            <AppIcon name="X" size={22} />
           ) : (
-            <AppIcon name="Menu" size={24} />
+            <AppIcon name="Menu" size={22} />
           )}
         </button>
       </div>
 
-      {/* Mobile menu - slides down when open */}
+      {/* Mobile dropdown menu */}
       <div
-        className={`md:hidden bg-white border-b border-gray-100 overflow-hidden transition-all duration-300 ease-in-out ${
+        className={`md:hidden bg-white overflow-hidden transition-all duration-300 ease-in-out ${
           isMenuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <nav className="flex flex-col px-4 py-4 gap-4">
-          <Link 
-            href="#projects" 
-            className="text-sm text-gray-700 hover:text-gray-900 transition-colors py-2"
+        <nav className="flex flex-col max-w-2xl mx-auto px-6 py-4 gap-1">
+          <Link
+            href="/#projects"
+            className="text-[16px] font-medium text-gray-900 hover:text-gray-600 transition-colors py-2"
             onClick={closeMenu}
           >
             Project
           </Link>
-          <Link 
-            href="#about" 
-            className="text-sm text-gray-700 hover:text-gray-900 transition-colors py-2"
+          <Link
+            href="/#about"
+            className="text-[16px] font-medium text-gray-500 hover:text-gray-900 transition-colors py-2"
             onClick={closeMenu}
           >
             About
           </Link>
-          <Link 
-            href="#contact" 
-            className="text-sm text-gray-700 hover:text-gray-900 transition-colors py-2"
+          <Link
+            href="/#contact"
+            className="text-[16px] font-medium text-gray-500 hover:text-gray-900 transition-colors py-2"
             onClick={closeMenu}
           >
             Contact
           </Link>
-          <a 
-            href="https://docs.google.com/document/d/1UKovLviOsYOcy3R3mzYDpuiNb9keo2ygue_DtGtQFzo/export?format=pdf" 
+          <a
+            href="https://docs.google.com/document/d/1UKovLviOsYOcy3R3mzYDpuiNb9keo2ygue_DtGtQFzo/export?format=pdf"
             download
-            className="text-sm text-gray-700 hover:text-gray-900 transition-colors py-2"
+            className="text-[16px] font-medium text-gray-500 hover:text-gray-900 transition-colors py-2"
             target="_blank"
             rel="noopener noreferrer"
             onClick={closeMenu}

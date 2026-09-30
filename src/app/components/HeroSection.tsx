@@ -16,8 +16,7 @@ const slides: Slide[] = [
     heading: 'Web & Mobile App\nDesign Expert',
     bio: (
       <span>
-        <span className="text-[#7c6a5e] font-medium">Eric here</span>
-        {' – Driven by curiosity and a love for great, high-quality and thoughtful design. Striving to create something truly unique and meaningful.'}
+        {'Eric here  –  Driven by curiosity and a love for great, high-quality and thoughtful design. Striving to create something truly unique and meaningful.'}
       </span>
     ),
     ctaLabel: 'For Recruiters',
@@ -26,23 +25,7 @@ const slides: Slide[] = [
     heading: '2 Years Of Web & Mobile App\nDesign Experience',
     bio: (
       <span>
-        {"I'm a product designer specializing in web and mobile apps for "}
-        <span className="text-[#7c6a5e]">FinTech</span>
-        {', '}
-        <span className="text-[#7c6a5e]">eCommerce</span>
-        {', and '}
-        <span className="text-[#7c6a5e]">SaaS</span>
-        {'. I craft user-focused designs that drive conversions and resonate with audiences. Currently based in '}
-        <span className="text-[#7c6a5e]">Ho</span>
-        {', '}
-        <span className="text-[#7c6a5e]">Dzodze</span>
-        {', '}
-        <span className="text-[#7c6a5e]">Aflao</span>
-        {', '}
-        <span className="text-[#7c6a5e]">Tema</span>
-        {', '}
-        <span className="text-[#7c6a5e]">Accra</span>
-        {'.'}
+        {"I'm a product designer specializing in web and mobile apps for FinTech, eCommerce, and SaaS. I craft user-focused designs that drive conversions and resonate with audiences. Currently based in Ho, Dzodze, Aflao, Tema, Accra."}
       </span>
     ),
     ctaLabel: 'For Engineers',
@@ -51,17 +34,11 @@ const slides: Slide[] = [
     heading: 'I design highly technically useful,\nsimple & well-made products.',
     bio: (
       <span>
-        {'While I am ≠ an engineer, I am highly technical, I know my way around and I can communicate my ideas fluently. I can tell you how I built '}
-        <a href="#" className="text-[#7c6a5e] hover:underline">(this.site)</a>
-        {' from scratch & '}
-        <a href="#" className="text-[#7c6a5e] hover:underline">(this.one)</a>
-        {' && '}
-        <a href="#" className="text-[#7c6a5e] hover:underline">(this.too)</a>
-        {'.'}
+        {'While I am ≠ an engineer, I am highly technical, I know my way around and I can communicate my ideas fluently. I can tell you how I built (this.site) from scratch & (this.one) && (this.too).'}
       </span>
     ),
     ctaLabel: 'For Everyone',
-    customOffset: '9ch', // "simple" aligns under "highly"
+    customOffset: '9ch',
   },
 ];
 
@@ -75,14 +52,14 @@ export default function HeroSection() {
   const currentSlide = slides[activeSlide];
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center pt-16 pb-0 px-4 sm:px-6 bg-white">
-      <div className="flex-1 flex flex-col items-center justify-center w-full max-w-4xl mx-auto text-center mt-[7rem]">
+    <section id="home" className="min-h-screen flex flex-col items-center justify-center pt-24 sm:pt-28 pb-8 px-4 sm:px-6 bg-white">
+      <div id="about" className="flex-1 flex flex-col items-center justify-center w-full max-w-4xl mx-auto text-center mt-6 sm:mt-10">
         {/* Animated Icon */}
         <AnimatedIcon className="mb-6 sm:mb-8 text-gray-900" />
         
         {/* Heading - Staggered/Cascading Layout */}
         <h1 
-          className="mb-4 sm:mb-6 text-2xl sm:text-3xl md:text-4xl lg:text-[48px] px-2"
+          className="mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-[52px] px-2"
           style={{
             width: 'auto',
             height: 'auto',
@@ -114,8 +91,8 @@ export default function HeroSection() {
         </h1>
 
         {/* Bio */}
-        <div className="min-h-[5rem] mb-6 sm:mb-8 max-w-xl mx-auto px-2">
-          <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed text-center">
+        <div className="min-h-[5rem] mb-6 sm:mb-8 max-w-2xl mx-auto px-2">
+          <p className="text-[17px] font-medium text-black leading-relaxed text-center">
             {currentSlide.bio}
           </p>
         </div>
@@ -139,23 +116,24 @@ export default function HeroSection() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full px-4">
           <a
             href="#contact"
-            className="w-full sm:w-auto bg-gray-900 text-white text-xs sm:text-sm font-semibold px-6 sm:px-8 py-3 rounded-full hover:bg-gray-700 transition-colors text-center"
+            className="group w-full sm:w-auto flex items-center justify-center gap-2 bg-gray-900 text-white text-[18px] font-medium px-6 sm:px-8 py-3 rounded-full hover:bg-gray-700 transition-colors text-center"
           >
             Contact Me
+            <span className="inline-block overflow-hidden max-w-0 group-hover:max-w-[1.5rem] transition-all duration-300 ease-in-out -rotate-45">→</span>
           </a>
           <button
             onClick={handleSecondaryCTA}
-            className="w-full sm:w-auto flex items-center justify-center gap-2 border border-gray-300 text-gray-800 text-xs sm:text-sm font-medium px-6 sm:px-8 py-3 rounded-full hover:border-gray-500 transition-colors bg-white"
+            className="group w-full sm:w-auto flex items-center justify-center gap-2 border border-gray-300 text-black text-[18px] font-medium px-6 sm:px-8 py-3 rounded-full hover:border-gray-500 transition-colors bg-white"
           >
             {currentSlide.ctaLabel}
-            <span className="text-base">→</span>
+            <span className="inline-block group-hover:-rotate-45 transition-transform duration-200">→</span>
           </button>
         </div>
       </div>
 
       {/* Footer social links */}
       <div className="w-full flex items-center justify-center gap-6 py-8 mt-4">
-        <span className="text-xs font-semibold tracking-widest text-gray-500 uppercase">SAY HELLO</span>
+        <span className="text-[17px] font-semibold tracking-widest text-black uppercase">SAY HELLO</span>
         <a
           href="https://linkedin.com"
           target="_blank"
@@ -163,7 +141,7 @@ export default function HeroSection() {
           aria-label="LinkedIn"
           className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:border-gray-500 transition-colors"
         >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="text-gray-700">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="text-black">
             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
           </svg>
         </a>
@@ -174,7 +152,7 @@ export default function HeroSection() {
           aria-label="X (Twitter)"
           className="w-8 h-8 flex items-center justify-center hover:opacity-70 transition-opacity"
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-gray-800">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-black">
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
           </svg>
         </a>

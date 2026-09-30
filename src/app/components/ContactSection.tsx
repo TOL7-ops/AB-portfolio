@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef, useEffect } from 'react';
-import AppLogo from '@/components/ui/AppLogo';
+import { BrandLogoMark } from '@/components/ui/AppLogo';
 import PointerIcon from '@/components/ui/PointerIcon';
 
 export default function ContactSection() {
@@ -28,113 +28,93 @@ export default function ContactSection() {
   return (
     <section 
       id="contact" 
-      className="w-full h-min flex flex-col justify-end items-start px-4 sm:px-8 md:px-16 lg:px-24 pb-24 md:pb-48 pt-8 overflow-visible gap-8 md:gap-14 bg-white"
+      className="w-full py-16 sm:py-24 md:py-32 px-6 sm:px-10 md:px-16 lg:px-24 bg-white overflow-hidden"
     >
-      <div ref={sectionRef} className="w-full max-w-[45rem] mx-auto flex flex-col gap-8 md:gap-14">
-        {/* Top section: Logo + Heading */}
-        <div className="flex items-start gap-8">
-          <div className="scroll-reveal flex-shrink-0 w-full">
-            {/* Logo with heading */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-              {/* Logo box */}
-              <div 
-                className="w-[4rem] h-[4rem] flex flex-row justify-start items-start overflow-visible rounded-xl flex-shrink-0"
-                style={{
-                  padding: '12.148px',
-                  backgroundColor: '#f4f4f4',
-                  gap: '3.037px'
-                }}
-              >
-                <AppLogo src="" iconName="Sparkles" size={28} />
-              </div>
-              
-              {/* Heading */}
-              <div className="flex-1">
-                <h2 
-                  className="font-medium text-3xl sm:text-4xl md:text-5xl lg:text-[56px]"
-                  style={{
-                    fontWeight: 500,
-                    fontStyle: 'normal',
-                    fontFamily: '"Manrope", "Manrope Placeholder", sans-serif',
-                    color: '#000000',
-                    letterSpacing: '0em',
-                    lineHeight: '1.2'
-                  }}
-                >
-                  <span className="block">Web &amp; Mobile App</span>
-                  <span className="block sm:ml-[6ch] md:ml-[8ch] lg:ml-[6ch]">
-                    <span className="italic">Design Expert</span>
-                  </span>
-                </h2>
-              </div>
-            </div>
+      <div ref={sectionRef} className="w-full max-w-4xl mx-auto flex flex-col gap-10 sm:gap-14">
+        {/* Top: Brand Logo + Cascading Heading */}
+        <div className="scroll-reveal flex items-start gap-4 sm:gap-6">
+          {/* Logo mark */}
+          <BrandLogoMark className="w-16 h-16 sm:w-[76px] sm:h-[76px]" />
+
+          {/* Heading */}
+          <div className="flex-1">
+            <h2 
+              className="font-medium text-3xl sm:text-4xl md:text-5xl lg:text-[54px] text-black"
+              style={{
+                fontWeight: 500,
+                fontStyle: 'normal',
+                fontFamily: '"Manrope", "Manrope Placeholder", sans-serif',
+                letterSpacing: '0em',
+                lineHeight: '1.18'
+              }}
+            >
+              <span className="block">Web &amp; Mobile App</span>
+              <span className="block ml-[4ch] sm:ml-[6ch] md:ml-[7ch]">
+                Design Expert
+              </span>
+            </h2>
           </div>
         </div>
 
-        {/* Bottom section: Description + Button */}
-        <div className="flex flex-col lg:flex-row items-start lg:items-center gap-8 lg:gap-[6rem] mt-0 lg:mt-[2rem]">
+        {/* Middle: Description + Button */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 md:gap-12 mt-2 sm:mt-4">
           {/* Left: Description */}
-          <div className="scroll-reveal stagger-1 w-full lg:w-[436px]">
+          <div className="scroll-reveal stagger-1 max-w-[420px]">
             <p 
-              className="text-gray-900 font-medium break-words text-base sm:text-lg"
-              style={{ 
-                lineHeight: '1.2',
-                letterSpacing: '0em'
-              }}
+              className="text-black font-medium text-[17px] sm:text-[18px] leading-snug"
+              style={{ letterSpacing: '0em' }}
             >
               Ready for a design adventure, or need product design advice? Ping me for fun collaboration
             </p>
           </div>
 
-          {/* Right: Drop a message button with pointer */}
-          <div className="scroll-reveal stagger-2 relative">
+          {/* Right: Drop a message button */}
+          <div className="scroll-reveal stagger-2 flex-shrink-0">
             <a
               href="mailto:eric@design.studio"
-              className="flex flex-row justify-center items-center w-min h-min px-6 sm:px-8 py-5 sm:py-6 rounded-xl overflow-visible gap-[10px] border-2 border-black hover:opacity-90 transition-opacity"
-              style={{
-                background: 'linear-gradient(90deg, #494545 0%, rgb(98, 97, 97) 100%)',
-                boxSizing: 'border-box'
-              }}
+              className="inline-flex items-center justify-center px-8 sm:px-9 py-4 sm:py-4.5 rounded-[14px] bg-[#444444] hover:bg-[#333333] transition-colors border border-black/10 shadow-sm group"
             >
-              <span className="text-white font-medium text-sm sm:text-base whitespace-nowrap">
+              <span className="text-white font-medium text-[16px] sm:text-[17px] whitespace-nowrap">
                 Drop a message
               </span>
             </a>
-            {/* Pointer icon - hidden on mobile */}
-            <div className="hidden xl:block absolute -bottom-[7rem] right-[12rem] opacity-60">
-              <PointerIcon width={72} height={72} />
-            </div>
           </div>
         </div>
 
-        {/* Social links section */}
-        <div className="scroll-reveal stagger-3 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-          <span className="text-xs font-semibold uppercase tracking-widest text-gray-500">
-            Say Hello
-          </span>
-          <div className="flex items-center gap-4">
+        {/* Bottom: SAY HELLO + Socials & Metallic Pointer */}
+        <div className="scroll-reveal stagger-3 relative flex items-center justify-between mt-4 sm:mt-8 pt-2">
+          {/* Social links */}
+          <div className="flex items-center gap-3.5 sm:gap-4">
+            <span className="text-[13px] sm:text-[14px] font-semibold uppercase tracking-widest text-black">
+              SAY HELLO
+            </span>
             <a
-              href="https://behance.net"
+              href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Behance profile"
-              className="w-10 h-10 rounded-full border border-gray-300 bg-white flex items-center justify-center hover:border-gray-900 transition-colors group"
+              aria-label="LinkedIn profile"
+              className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-gray-400/80 bg-white flex items-center justify-center hover:border-black transition-colors"
             >
-              <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current text-gray-600 group-hover:text-gray-900 transition-colors">
-                <path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 1.202.483 1.827 1.466 2.239.759.313 1.619.195 2.338-.09L22 17zm-5.73-5.707c-.477-.556-1.242-.75-2.054-.75-.75 0-1.396.201-1.836.607-.301.272-.507.65-.607 1.143h4.63c-.052-.527-.259-.931-.133-1z"/>
-              </svg>
+              <span className="text-[12px] sm:text-[13px] font-bold text-black leading-none font-sans">
+                in
+              </span>
             </a>
             <a
               href="https://x.com"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="X (Twitter) profile"
-              className="w-10 h-10 rounded-full border border-gray-300 bg-white flex items-center justify-center hover:border-gray-900 transition-colors group"
+              className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center hover:opacity-70 transition-opacity"
             >
-              <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current text-gray-600 group-hover:text-gray-900 transition-colors">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current text-black">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
               </svg>
             </a>
+          </div>
+
+          {/* Pointer icon */}
+          <div className="pointer-events-none absolute left-[45%] sm:left-[50%] -top-4 sm:-top-6 opacity-90">
+            <PointerIcon width={68} height={68} />
           </div>
         </div>
       </div>

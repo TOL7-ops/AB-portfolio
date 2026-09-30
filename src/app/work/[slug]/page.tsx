@@ -9,6 +9,7 @@ import CaseResearch from './components/CaseResearch';
 import CaseSolution from './components/CaseSolution';
 import CaseLearnings from './components/CaseLearnings';
 import CaseClosing from './components/CaseClosing';
+import Header from '@/components/Header';
 import TestimonialsSection from '@/app/components/TestimonialsSection';
 import ContactSection from '@/app/components/ContactSection';
 
@@ -52,6 +53,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
   return (
     <main className="bg-white">
+      <Header />
       <CaseHero
         projectName={project.title}
         year={project.year}

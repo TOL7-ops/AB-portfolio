@@ -14,9 +14,15 @@ interface Project {
   description: string;
   bgColor: string;
   note: string;
+  noteSubtext?: string;
   deliverables: string;
+  deliverablesSubtext?: string;
+  stat1Value?: string;
+  stat1Label?: string;
+  stat2Value?: string;
+  stat2Label?: string;
   link?: string;
-  slug?: string;  // Add slug for case study routing
+  slug?: string;
 }
 
 const projects: Project[] = [
@@ -25,40 +31,46 @@ const projects: Project[] = [
   name: 'GetVax',
   year: '2026',
   category: 'Health Tech Website',
-  image: "/image.png",
+  image: "/iPad Pro.png",
   imageAlt: 'Health tech dashboard interface displayed on a tablet, dark green background, medical data visualization with charts and tables',
   description: 'Modern healthcare for Africans. Highly crafted and user-centered-designed landing page and web app.',
   bgColor: '#1B4332',
-  note: 'This product is in active development',
-  deliverables: 'Website, Web App & Admin Portal',
+  note: 'Note:',
+  noteSubtext: 'This product is in active development',
+  deliverables: 'Deliverables:',
+  deliverablesSubtext: 'Website, Web App & Admin Portal',
   link: 'https://www.lafyai.com/',
   slug: 'getvax'
 },
 {
   id: 2,
-  name: 'Afya',
-  year: '2026',
-  category: 'Health Tech Mobile App',
+  name: 'Olive Stock App',
+  year: '2025',
+  category: "SolveraLabHQ's Website",
   image: "/afya.jpg",
-  imageAlt: 'Afya healthcare app interface showing blood pressure monitoring dashboard with hypertension management features',
-  description: 'Healthcare platform focused on blood-pressure monitoring, hypertension management, and family health management.',
+  imageAlt: 'Olive Stock App interface showing high-performance interactive design',
+  description: 'High-performance interactive website with seamless animations and optimized load times.',
   bgColor: '#E8F4F8',
-  note: 'Currently in beta testing with select users',
-  deliverables: 'iOS App, Android App & Web Dashboard',
+  note: '47% New Customers',
+  noteSubtext: 'Increase new users based, demonstrating Credibility.',
+  deliverables: '15%',
+  deliverablesSubtext: 'Increase in daily active users shows enhanced engagement.',
   link: 'https://useafiyai.com/',
   slug: 'afya'
 },
 {
   id: 3,
-  name: 'Petal Finance',
+  name: 'Olive Website',
   year: '2025',
-  category: 'Mobile App Design',
+  category: "SolveraLabHQ's Website",
   image: "/image3.jpg",
-  imageAlt: 'Mobile finance app interface mockup showing transaction history and spending analytics on a smartphone, warm coral background',
-  description: 'Personal finance mobile app helping millennials track spending and reach savings goals. 4.8★ on App Store with 200k+ downloads.',
+  imageAlt: 'Olive website interface showing high-performance interactive design',
+  description: 'High-performance interactive website with seamless animations and optimized load times.',
   bgColor: '#7F1D1D',
-  note: 'Live on App Store & Play Store',
-  deliverables: 'iOS App, Android App & Marketing Site'
+  note: '47% New Customers',
+  noteSubtext: 'Increase new users based, demonstrating Credibility.',
+  deliverables: '15%',
+  deliverablesSubtext: 'Increase in daily active users shows enhanced engagement.',
 }];
 
 
@@ -87,154 +99,68 @@ function ProjectCard({ project, index }: {project: Project;index: number;}) {
       className="scroll-reveal"
       style={{ transitionDelay: `${index * 0.12}s` }}>
       
-      {/* Project name and year - stacked vertically above image */}
-      <div className="flex flex-col mb-3 sm:mb-4">
-        <h3 className="text-lg sm:text-xl font-semibold text-gray-900">{project.name}</h3>
-        <span className="text-sm text-gray-500">{project.year}</span>
+      {/* Project name and year - left-aligned above image */}
+      <div className="flex flex-col items-start mb-3 -ml-[5%]">
+        <h3 className="text-[18px] font-semibold text-black">{project.name}</h3>
+        <span className="text-[15px] text-black">{project.year}</span>
       </div>
-      
-      {/* Project image - wrapped in Link if slug exists */}
+
+      {/* Project image */}
       {project.slug ? (
-        // Internal case study link
-        <Link 
+        <Link
           href={`/work/${project.slug}`}
-          className="block w-full mb-6 rounded-[32px] overflow-hidden transition-opacity hover:opacity-90 cursor-pointer relative"
-          style={project.id === 1 ? { 
-            backgroundColor: '#195243',
-            height: '100%',
-            aspectRatio: '1.7916666666666667 / 1'
-          } : undefined}
+          className="block mb-6 rounded-[32px] overflow-hidden transition-opacity hover:opacity-90 cursor-pointer relative"
+          style={{ backgroundColor: project.bgColor, height: '560px', width: '110%', marginLeft: '-5%' }}
         >
-          {project.id === 1 ? (
-            <div 
-              style={{ 
-                position: 'absolute',
-                inset: '0',
-                width: '70%',
-                left: '10%',
-                top: '0',
-                right: '0',
-                bottom: '0'
-              }}
-            >
-              <AppImage
-                src={project.image}
-                alt={project.imageAlt}
-                fill
-                style={{
-                  objectFit: 'cover',
-                  color: 'transparent'
-                }}
-                sizes="100vw"
-              />
-            </div>
-          ) : (
-            <div className="relative w-full" style={{ aspectRatio: '1.7916666666666667 / 1' }}>
-              <AppImage
-                src={project.image}
-                alt={project.imageAlt}
-                fill
-                className="object-cover"
-                sizes="100vw"
-              />
-            </div>
-          )}
+          <div style={{ position: 'absolute', width: '85%', left: '8%', top: '-5%', bottom: '0' }}>
+            <AppImage src={project.image} alt={project.imageAlt} fill style={{ objectFit: 'cover', color: 'transparent' }} sizes="100vw" />
+          </div>
         </Link>
       ) : project.link ? (
-        // External link
-        <a 
-          href={project.link} 
-          target="_blank" 
+        <a
+          href={project.link}
+          target="_blank"
           rel="noopener noreferrer"
-          className="block w-full mb-6 rounded-[32px] overflow-hidden transition-opacity hover:opacity-90 cursor-pointer relative"
-          style={project.id === 1 ? { 
-            backgroundColor: '#195243',
-            height: '100%',
-            aspectRatio: '1.7916666666666667 / 1'
-          } : undefined}
+          className="block mb-6 rounded-[32px] overflow-hidden transition-opacity hover:opacity-90 cursor-pointer relative"
+          style={{ backgroundColor: project.bgColor, height: '560px', width: '110%', marginLeft: '-5%' }}
         >
-          {project.id === 1 ? (
-            <div 
-              style={{ 
-                position: 'absolute',
-                inset: '0',
-                width: '70%',
-                left: '10%',
-                top: '0',
-                right: '0',
-                bottom: '0'
-              }}
-            >
-              <AppImage
-                src={project.image}
-                alt={project.imageAlt}
-                fill
-                style={{
-                  objectFit: 'cover',
-                  color: 'transparent'
-                }}
-                sizes="100vw"
-              />
-            </div>
-          ) : (
-            <div className="relative w-full" style={{ aspectRatio: '1.7916666666666667 / 1' }}>
-              <AppImage
-                src={project.image}
-                alt={project.imageAlt}
-                fill
-                className="object-cover"
-                sizes="100vw"
-              />
-            </div>
-          )}
+          <div style={{ position: 'absolute', width: '85%', left: '8%', top: '-5%', bottom: '0' }}>
+            <AppImage src={project.image} alt={project.imageAlt} fill style={{ objectFit: 'cover', color: 'transparent' }} sizes="100vw" />
+          </div>
         </a>
       ) : (
-        // No link
-        <div 
-          className="w-full mb-6 rounded-[32px] overflow-hidden"
-          style={project.id === 1 ? { backgroundColor: '#195243' } : undefined}
+        <div
+          className="mb-6 rounded-[32px] overflow-hidden relative"
+          style={{ backgroundColor: project.bgColor, height: '560px', width: '110%', marginLeft: '-5%' }}
         >
-          <div className="relative w-full" style={{ aspectRatio: '1.7916666666666667 / 1' }}>
-            <AppImage
-              src={project.image}
-              alt={project.imageAlt}
-              fill
-              className="object-cover"
-              sizes="100vw"
-            />
+          <div style={{ position: 'absolute', width: '85%', left: '8%', top: '-5%', bottom: '0' }}>
+            <AppImage src={project.image} alt={project.imageAlt} fill style={{ objectFit: 'cover', color: 'transparent' }} sizes="100vw" />
           </div>
         </div>
       )}
 
       {/* Category tag */}
       <div className="mb-3 sm:mb-4">
-        <span className="inline-block text-xs sm:text-sm font-medium text-gray-700">
+        <span className="inline-block text-[15px] font-medium text-black">
           {project.category}
         </span>
       </div>
 
       {/* Description */}
-      <p className="text-xl sm:text-2xl md:text-3xl font-medium text-gray-900 leading-snug mb-4 sm:mb-6">
+      <p className="text-[18px] font-medium text-black leading-snug mb-4 sm:mb-6">
         {project.description}
       </p>
 
       {/* Note & Deliverables box */}
-      <div className="border border-gray-200 rounded-xl sm:rounded-2xl p-4 sm:p-6 bg-white">
+      <div className="border border-black rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 bg-white">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-          {/* Note column */}
           <div>
-            <h3 className="text-[24px] font-[500] text-black mb-2">Note:</h3>
-            <p className="text-sm text-gray-600 leading-relaxed">
-              {project.note}
-            </p>
+            <h3 className="text-[18px] font-[500] text-black mb-2">{project.note}</h3>
+            {project.noteSubtext && <p className="text-[15px] text-black leading-relaxed">{project.noteSubtext}</p>}
           </div>
-          
-          {/* Deliverables column */}
           <div>
-            <h3 className="text-[24px] font-[500] text-black mb-2">Deliverables:</h3>
-            <p className="text-sm text-gray-600 leading-relaxed">
-              {project.deliverables}
-            </p>
+            <h3 className="text-[18px] font-[500] text-black mb-2">{project.deliverables}</h3>
+            {project.deliverablesSubtext && <p className="text-[15px] text-black leading-relaxed">{project.deliverablesSubtext}</p>}
           </div>
         </div>
       </div>
@@ -264,19 +190,19 @@ export default function ProjectsSection() {
   }, []);
 
   return (
-    <section id="projects" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-white">
-      <div className="max-w-[76rem] mx-auto">
+    <section id="projects" className="py-12 sm:py-16 md:py-20 px-6 sm:px-10 md:px-16 lg:px-24 bg-white">
+      <div className="max-w-5xl mx-auto">
         {/* Section header - Centered with dotted line */}
         <div ref={headingRef} className="mb-10 sm:mb-12 md:mb-14 text-center">
           {/* Dotted line decoration */}
-          <div className="flex items-center justify-center mb-4 sm:mb-6 scroll-reveal">
+          <div className="flex items-center justify-center mb-2">
             <div className="border-t-2 border-dotted border-black w-[8rem] sm:w-[12rem]"></div>
           </div>
           
           {/* Featured Projects label */}
           <div className="flex items-center justify-center gap-2 mb-4 sm:mb-6 scroll-reveal stagger-1">
-            <span className="w-2 h-2 rounded-full bg-gray-900" />
-            <span className="text-xs font-semibold uppercase tracking-widest text-gray-600">
+            <span className="w-2 h-2 rounded-full bg-black" />
+            <span className="text-[16px] font-semibold tracking-widest text-black">
               Featured Projects
             </span>
           </div>
@@ -295,7 +221,7 @@ export default function ProjectsSection() {
               }}
             >
               <span className="block">Delivering Tangible Results</span>
-              <span className="block">That Propel Success</span>
+              <span className="block ml-[16ch]">That Propel Success</span>
             </h2>
           </div>
         </div>
